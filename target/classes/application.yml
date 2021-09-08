@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway-service  
+  cloud:
+    gateway:
+      routes:
+      - id: data1
+        uri: http://localhost:9091/
+        predicates:        - Path=/datasatu/**
+      - id: data2
+        uri: http://kompas.com/
+        predicates:
+        - Path=/kompas/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:  port: 8080
+logging:  level:    '[org.springframework.web]': debug
